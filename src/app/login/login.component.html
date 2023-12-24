@@ -1,1 +1,27 @@
-<p>login works!</p>
+<app-header-login></app-header-login>
+
+<div class="card bg-dark">
+    <div class="card-header bg-light text-black text-center">Bienvenido!</div>
+    <div class="card-body">
+        <form>
+            <div class="form-group row text-white">
+                <div class="col-12">
+                    <input type="text" class="form-control" [(ngModel)]="login.username" name="username" placeholder="Ingrese su username">
+                </div>
+            </div>
+            <div class="form-group row text-white">
+                <div class="col-23">
+                    <input type="password" class="form-control" [(ngModel)]="login.password" name="username" placeholder="Ingrese su password">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-12">
+                    <button class="btn btn-primary w-100" role="button" (click)='logIn()'>Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

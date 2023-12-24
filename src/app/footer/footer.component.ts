@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  public proyect : any = {year: '2023', nameProyect: 'Gestion Usuarios - Unicauca'};
-  public tecnology : any ={leyenda: 'Web desarrollada con ', tec1: 'Angular', tec2:'Springboot'};
-  public author: String = "Julian David Camacho Erazo"
+  public proyecto: any = {anio: '2023', nombreProyecto: 'Proyecto Gestion usuarios Unicauca'};
+  public tecnologia: any = {leyenda: 'WebApp desarrollada con ', tec1: 'Angular ', tec2: 'Spring'};
+  public autor: string = 'Julian Camacho Erazo';
 }
