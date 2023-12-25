@@ -24,6 +24,9 @@ export class LoginComponent implements OnInit{
     this.loginService.login(this.login).subscribe(
       (response) =>{
         let roleView = this.getEnumRole(response.access)
+        if(roleView == "RoleNoValid"){
+          sessionStorage.setItem('token', response.token);
+        }
         this.redirectHome(roleView,response.username);
       },
       (err) => {
@@ -60,6 +63,7 @@ export class LoginComponent implements OnInit{
       );
     }
   }
+  
   private getEnumRole(roles : String[]){
     let roleResponse = "RoleNoValid";
     if(roles && roles.length>0){

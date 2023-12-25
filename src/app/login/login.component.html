@@ -10,24 +10,16 @@
             <form>
                 <div class="form-group row text-white">
                     <div class="col-12">
-                        <input type="text" class="form-control" [(ngModel)]="login.username" name="username" #username="ngModel" placeholder="Ingrese su username" required>
-                        <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
-                            <div *ngIf="username.errors?.['required']">
-                                Ingrese su username
-                            </div>
-                        </div>
+                        <input type="text" class="form-control" [(ngModel)]="login.username" name="username" #username="ngModel" placeholder="Ingrese su username" required [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
                     </div>
                 </div>
+                <br>
                 <div class="form-group row text-white">
                     <div class="col-12">
-                        <input type="password" class="form-control" [(ngModel)]="login.password" name="password" #password="ngModel" placeholder="Ingrese su password" required>
-                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
-                            <div *ngIf="password.errors?.['required']">
-                                Ingrese su contraseña
-                            </div>
-                        </div>
+                        <input type="password" class="form-control" [(ngModel)]="login.password" name="password" #password="ngModel" placeholder="Ingrese su password" required [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
                     </div>
                 </div>
+                <br>
                 <div class="form-group row">
                     <div class="col-12">
                         <button class="btn btn-primary w-100" role="button" (click)='logIn()'>Iniciar sesion</button>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header-estudiante',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './header-estudiante.component.css'
 })
 export class HeaderEstudianteComponent {
-
+  public tittle: String = "Gestion estudiante Unicauca";
+  
 }
