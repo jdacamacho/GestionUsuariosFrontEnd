@@ -1,6 +1,6 @@
 export class credentionals{
     idUser!:number;
-    username!:String;
+    username!:string;
     email!:string;
     access!: string[];
     token!:string;

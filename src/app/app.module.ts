@@ -14,6 +14,8 @@ import { HomeAdministradorComponent } from './homes/home-administrador/home-admi
 import { HomeDocenteComponent } from './homes/home-docente/home-docente.component';
 import { HomeEstudianteComponent } from './homes/home-estudiante/home-estudiante.component';
 import { FormsModule } from '@angular/forms';
+import { LoginService } from './login/LoginService';
+import { HomeAdministradorDocenteComponent } from './homes/home-administrador-docente/home-administrador-docente.component';
 
 
 const routes : Routes= [
@@ -21,7 +23,8 @@ const routes : Routes= [
   {path: 'auth', component: LoginComponent },
   {path : 'homeAdm', component:HomeAdministradorComponent},
   {path: 'homeDocente', component:HomeDocenteComponent},
-  {path: 'homeEstudiante', component:HomeEstudianteComponent}
+  {path: 'homeEstudiante', component:HomeEstudianteComponent},
+  {path: 'homeAdmDocente', component:HomeAdministradorDocenteComponent}
 ]
 
 @NgModule({
@@ -36,6 +39,7 @@ const routes : Routes= [
     HomeAdministradorComponent,
     HomeDocenteComponent,
     HomeEstudianteComponent,
+    HomeAdministradorDocenteComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,7 @@ const routes : Routes= [
 
   ],
   providers: [
-    
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
