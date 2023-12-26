@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { credentionals } from './Credentionals';
 import { login } from './Login';
 import { Router } from '@angular/router';
-import { LoginService } from './LoginService';
+import { LoginService } from './Login.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,19 +21,23 @@ export class LoginComponent implements OnInit{
   }
 
   public logIn(){
+    
     this.loginService.login(this.login).subscribe(
       (response) =>{
         let roleView = this.getEnumRole(response.access)
-        if(roleView == "RoleNoValid"){
-          sessionStorage.setItem('token', response.token);
-        }
         this.redirectHome(roleView,response.username);
       },
       (err) => {
         console.error('Código del error desde el backend: ' + err.status);
-        console.error(err.error);
+            console.error(err.error);
+            Swal.fire('Error', 'Credenciales incorrectas', 'error');
       }
     );
+  }
+
+  public logOut(){
+    this.loginService.logout();
+    Swal.fire('Cerrando session...');
   }
 
   private redirectHome(roleView :string, username : string){
@@ -43,6 +47,7 @@ export class LoginComponent implements OnInit{
         "Bienvenido: ",username
       );
     }else if(roleView == "Administrador"){
+
       this.router.navigate(['/homeAdm']);
       Swal.fire(
         "Bienvenido: ",username
@@ -57,12 +62,13 @@ export class LoginComponent implements OnInit{
       Swal.fire(
         "Bienvenido: ",username
       );
-    }else if(roleView == "RoleNoValid"){
-      Swal.fire(
-        "Error, revise sus credenciales"
-      );
     }
   }
+
+  public setCurrentUser(response : credentionals){
+    return this.loginService.setcurrentIdUser(response.idUser);
+  }
+
   
   private getEnumRole(roles : String[]){
     let roleResponse = "RoleNoValid";
