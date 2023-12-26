@@ -4,6 +4,7 @@ import { login } from './Login';
 import { Router } from '@angular/router';
 import { LoginService } from './Login.service';
 import Swal from 'sweetalert2';
+import { error } from 'node:console';
 
 @Component({
   selector: 'app-login',
@@ -24,20 +25,15 @@ export class LoginComponent implements OnInit{
     
     this.loginService.login(this.login).subscribe(
       (response) =>{
-        let roleView = this.getEnumRole(response.access)
+        let roleView = this.getEnumRole(response.access)        
         this.redirectHome(roleView,response.username);
       },
       (err) => {
         console.error('Código del error desde el backend: ' + err.status);
-            console.error(err.error);
-            Swal.fire('Error', 'Credenciales incorrectas', 'error');
+        console.error(err.error);
+        Swal.fire('Error', 'ingrese las credenciales correctas','error')
       }
     );
-  }
-
-  public logOut(){
-    this.loginService.logout();
-    Swal.fire('Cerrando session...');
   }
 
   private redirectHome(roleView :string, username : string){
@@ -61,15 +57,10 @@ export class LoginComponent implements OnInit{
       this.router.navigate(['/homeAdmDocente']);
       Swal.fire(
         "Bienvenido: ",username
-      );
+      )
     }
   }
 
-  public setCurrentUser(response : credentionals){
-    return this.loginService.setcurrentIdUser(response.idUser);
-  }
-
-  
   private getEnumRole(roles : String[]){
     let roleResponse = "RoleNoValid";
     if(roles && roles.length>0){
@@ -78,7 +69,7 @@ export class LoginComponent implements OnInit{
           return "Estudiante";
         }else if(roles[i] == "ROLE_Administrador"){
           if(roleResponse == "Docente"){
-            console.log("docente")
+            return "AdministradorDocente"; 
           }
           roleResponse = "Administrador"
         }else if(roles[i] == "ROLE_Docente"){

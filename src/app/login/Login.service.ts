@@ -26,17 +26,13 @@ export class LoginService{
             .post<credentionals>(this.urlEndPoint,login,{headers: this.httpHeaders})
             .pipe(
                 catchError((e:any) =>{
-                    if (e.status === 203) {
-                        return throwError('Credenciales incorrectas');
-                    }
                     Swal.fire('ERROR', e.error.mensaje, 'error');
                     return throwError(e);
                 }),
-                tap((credentionals:credentionals)=>{
+                tap((credentionals: credentionals)=>{
                     sessionStorage.setItem('token',credentionals.token);
                     this.currentUserLoginOn.next(true);
                     this.token.next(sessionStorage.getItem('token') as string);
-                    //this.setcurrentIdUser(credentionals.idUser);
                 })
             );
     }

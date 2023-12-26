@@ -12,8 +12,7 @@ export class JwtInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let token: string = this.loginService.getUserToken;
-    console.log('Token obtenido:', token);
-    if (token !== "") {
+    if (token !== undefined ) {
       req = req.clone({
         setHeaders: {
           'Content-Type': 'application/json;charset=utf-8',
