@@ -16,5 +16,6 @@ export class Professor{
 
     constructor() {
         this.objProfessorType = new ProfessorType(); 
+        this.roles = [];
     }
 }

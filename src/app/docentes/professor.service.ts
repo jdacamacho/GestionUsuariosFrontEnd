@@ -4,6 +4,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { LoginService } from '../login/Login.service';
 import { Professor } from './Professor';
 import Swal from 'sweetalert2';
+import { ProfessorType } from './ProfessoType';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class ProfessorService {
 
   getProfessor(idUser:number) : Observable<Professor> {
     return this.http.get<Professor>(this.urlEndPointProfessor + "/" + idUser);
+  }
+
+  getTypeProfessors(): Observable<ProfessorType[]>{
+    return this.http.get<ProfessorType[]>(this.urlEndPointAdm + "/professorsType");
   }
 
   create(professor: Professor): Observable<Professor> {

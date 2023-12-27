@@ -13,6 +13,7 @@ import { ProfessorService } from '../../docentes/professor.service';
 export class HomeAdministradorDocenteComponent implements OnInit{
   public professor : Professor = new Professor() ;
   public userLoginOn : boolean = false;
+  private rolesWithAccess: string[] = ['ROLE_Administrador','ROLE_Docente'];
 
   constructor(private loginService: LoginService,
               private professorService: ProfessorService,
@@ -32,7 +33,9 @@ export class HomeAdministradorDocenteComponent implements OnInit{
         this.professor = professor;
       }
     );
-  
   }
 
+  userHasAccess():boolean{
+    return this.loginService.errorNotAccess(this.rolesWithAccess);
+  }
 }

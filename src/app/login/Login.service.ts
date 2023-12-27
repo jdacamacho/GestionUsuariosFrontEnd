@@ -62,9 +62,9 @@ export class LoginService{
         if(roles.length != this.listRole.length){
             return false;
         }else{
-            
+            const flagResponse = this.listRole.every(role => roles.includes(role));
+            return flagResponse;
         }
-        return true;
     }
 
     get getCurrentIdUser(){

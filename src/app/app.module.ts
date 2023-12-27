@@ -33,7 +33,7 @@ const routes : Routes= [
   {path: 'homeEstudiante', component:HomeEstudianteComponent},
   {path: 'homeAdmDocente', component:HomeAdministradorDocenteComponent},
   {path:'docentes',component:DocentesComponent},
-  {path:'docentes/update',component:UpdateProfessorComponent},
+  {path:'docentes/update/:idDocente',component:UpdateProfessorComponent},
   {path:'error',component:ErrorComponent},
   {path:'error/accessDenied',component:BadCredentionalsComponent}
 ]
