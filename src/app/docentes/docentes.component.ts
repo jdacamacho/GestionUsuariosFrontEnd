@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Professor } from './Professor';
 import { ProfessorService } from './professor.service';
 import { Router } from '@angular/router';
+import { LoginService } from '../login/Login.service';
 
 @Component({
   selector: 'app-docentes',
@@ -12,10 +13,11 @@ export class DocentesComponent implements OnInit {
 
   professors : Professor[] = [];
 
-  constructor(private professorService: ProfessorService,router: Router){}
+  constructor(private professorService: ProfessorService,
+              private loginService:LoginService){}
 
   ngOnInit(): void {
-    this.professorService.getProfessors().subscribe(
+    this.professorService.getProfessorsExclude(this.loginService.getCurrentIdUser).subscribe(
       (professors: Professor[]) => {
         this.professors = professors;
       }

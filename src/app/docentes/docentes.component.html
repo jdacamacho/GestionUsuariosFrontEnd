@@ -1,38 +1,56 @@
-<div class="card text-white bg-secondary mb-3" style="margin-top:  100px;">
-    <div class="card-header">Docentes</div>
-    <div class="card-body">
-      <h5 class="card-title">Listado de Docentes</h5>
-      <div *ngIf="professors?.length==0" class="alert alert-info">
-        No hay registros en la base de datos    
+<div class="component">
+  <app-header></app-header>
+  <div class="container mt-4">
+    <div class="card text-black bg-light mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="container mt-2">
+              <app-nav-bar-adm-professor></app-nav-bar-adm-professor>
+            </div>
+          </div>
+          <div class="col-md-10">
+            <h5 class="card-title">Docentes</h5>
+            <div *ngIf="professors?.length==0" class="alert alert-info">
+              No hay registros en la base de datos
+            </div>
+            <table class="table table-bordered table-striped" *ngIf="professors.length>0">
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>nombres</th>
+                  <th>apellidos</th>
+                  <th>username</th>
+                  <th>email</th>
+                  <th>telefono</th>
+                  <th>codigo</th>
+                  <th>tipo</th>
+                  <th>estado</th>
+                  <th>accion</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let professor of professors">
+                  <td>{{ professor.idUser }}</td>
+                  <td>{{ professor.names }}</td>
+                  <td>{{ professor.lastNames }}</td>
+                  <td>{{ professor.username }}</td>
+                  <td>{{ professor.email }}</td>
+                  <td>{{ professor.numberPhone }}</td>
+                  <td>{{ professor.codeProfessor }}</td>
+                  <td>{{ professor.objProfessorType.name }}</td>
+                  <td>
+                    <span [ngClass]="{'text-success': professor.state === 'Habilitado', 'text-danger': professor.state !== 'Habilitado'}">
+                      {{ professor.state === 'Habilitado' ? '✔' : '✘' }}
+                    </span>
+                  </td>
+                  <td><button type="button" class="btn btn-primary">Actualizar</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <table class="table table-bordered table-striped" *ngIf="professors.length>0">
-        <thead>
-          <tr>
-            <th>id</th>
-            <th>nombres</th>
-            <th>apellidos</th>
-            <th>username</th>
-            <th>email</th>
-            <th>telefono</th>
-            <th>codigo</th>
-            <th>tipo</th>
-            <th>estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let professors of professors">
-            <td>{{ professors.idUser }}</td>
-            <td>{{ professors.names }}</td>
-            <td>{{ professors.lastNames }}</td>
-            <td>{{ professors.username }}</td>
-            <td>{{ professors.email }}</td>
-            <td>{{ professors.numberPhone}}</td>
-            <td>{{ professors.codeProfessor }}</td>
-            <td>{{ professors.objProfessorType.name }}</td>
-            <td>{{ professors.state }}</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
-  
+</div>

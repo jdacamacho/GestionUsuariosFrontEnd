@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../login/Login.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Professor } from '../../docentes/Professor';
+import { ProfessorService } from '../../docentes/professor.service';
 
 @Component({
   selector: 'app-home-administrador-docente',
@@ -9,10 +11,12 @@ import { Router } from '@angular/router';
   styleUrl: './home-administrador-docente.component.css'
 })
 export class HomeAdministradorDocenteComponent implements OnInit{
+  public professor : Professor = new Professor() ;
   public userLoginOn : boolean = false;
-  public roleAuthorize : boolean = false;
 
-  constructor(private loginService: LoginService, private router: Router){
+  constructor(private loginService: LoginService,
+              private professorService: ProfessorService,
+              private router: Router){
 
   }
   
@@ -21,18 +25,14 @@ export class HomeAdministradorDocenteComponent implements OnInit{
       next:(userLoginOn) =>{
         this.userLoginOn = userLoginOn;
       }
-    });
+    })
+
+    this.professorService.getProfessor(this.loginService.getCurrentIdUser).subscribe(
+      (professor: Professor) => {
+        this.professor = professor;
+      }
+    );
+  
   }
-
-  public logOut(){
-    this.loginService.logout();
-    this.router.navigate(['/auth']);
-    Swal.fire('Cerrando session...');
-  }
-
-
-
-
-
 
 }

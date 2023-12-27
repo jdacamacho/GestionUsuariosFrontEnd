@@ -1,0 +1,40 @@
+<button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#opcionesCollapse"
+    aria-expanded="false" aria-controls="opcionesCollapse">
+    Menu de opciones
+</button>
+
+<div class="collapse mt-2" id="opcionesCollapse">
+    <div class="card card-body">
+        <button type="button" class="btn btn-outline-primary btn-block" (click)="redirectHome()">Home</button>
+        <button type="button" class="btn btn-outline-primary btn-block">Actualizar información</button>
+
+        <button class="btn btn-outline-primary btn-block" type="button" data-bs-toggle="collapse"
+            data-bs-target="#docentesCollapse" aria-expanded="false" aria-controls="docentesCollapse">
+            Docentes
+        </button>
+        <div class="collapse mt-2" id="docentesCollapse">
+            <button type="button" class="btn btn-outline-secondary" (click)="listProfessors()">Listar docentes</button>
+            <button type="button" class="btn btn-outline-secondary">Crear docente</button>
+        </div>
+
+        <button class="btn btn-outline-primary btn-block" type="button" data-bs-toggle="collapse"
+            data-bs-target="#estudiantesCollapse" aria-expanded="false" aria-controls="estudiantesCollapse">
+            Estudiantes
+        </button>
+        <div class="collapse mt-2" id="estudiantesCollapse">
+            <button type="button" class="btn btn-outline-secondary">Listar estudiantes</button>
+            <button type="button" class="btn btn-outline-secondary">Crear estudiantes</button>
+        </div>
+
+        <button class="btn btn-outline-primary btn-block" type="button" data-bs-toggle="collapse"
+            data-bs-target="#cursosCollapse" aria-expanded="false" aria-controls="cursosCollapse">
+            Cursos
+        </button>
+        <div class="collapse mt-2" id="cursosCollapse">
+            <button type="button" class="btn btn-outline-secondary">Listar cursos</button>
+            <button type="button" class="btn btn-outline-secondary">Crear curso</button>
+        </div>
+
+        <button type="button" class="btn btn-outline-primary btn-block" (click)="logOut()">Cerrar sesión</button>
+    </div>
+</div>

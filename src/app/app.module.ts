@@ -18,9 +18,11 @@ import { EstudiantesComponent } from './estudiantes/estudiantes.component';
 import { DocentesComponent } from './docentes/docentes.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { ProfessorService } from './docentes/professor.service';
-import { InformationProfessorComponent } from './userInformation/information-professor/information-professor.component';
-import { InformationStudentComponent } from './userInformation/information-student/information-student.component';
 import { HeaderComponent } from './header/header.component';
+import { NavBarAdmProfessorComponent } from './nav-bar/nav-bar-adm-professor/nav-bar-adm-professor.component';
+import { UpdateProfessorComponent } from './formsUpdate/update-professor/update-professor.component';
+import { ErrorComponent } from './error/error.component';
+import { BadCredentionalsComponent } from './bad-credentionals/bad-credentionals.component';
 
 
 const routes : Routes= [
@@ -31,7 +33,9 @@ const routes : Routes= [
   {path: 'homeEstudiante', component:HomeEstudianteComponent},
   {path: 'homeAdmDocente', component:HomeAdministradorDocenteComponent},
   {path:'docentes',component:DocentesComponent},
-  {path:'informationProfessor',component:InformationProfessorComponent}
+  {path:'docentes/update',component:UpdateProfessorComponent},
+  {path:'error',component:ErrorComponent},
+  {path:'error/accessDenied',component:BadCredentionalsComponent}
 ]
 
 @NgModule({
@@ -47,9 +51,11 @@ const routes : Routes= [
     DocentesComponent,
     CursosComponent,
     HomeAdministradorDocenteComponent,
-    InformationProfessorComponent,
-    InformationStudentComponent,
     HeaderComponent,
+    NavBarAdmProfessorComponent,
+    UpdateProfessorComponent,
+    ErrorComponent,
+    BadCredentionalsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,38 @@
 <div class="component" *ngIf="userLoginOn">
-    
-    <div class="container mt-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Título de la Tarjeta</h5>
-            <p class="card-text">Descripción de la tarjeta. Puedes agregar más contenido aquí.</p>
-
+  <app-header></app-header>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="container mt-2">
+              <app-nav-bar-adm-professor></app-nav-bar-adm-professor>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Informacion Personal:</h5>
+                <p class="card-text"><b>Identificacion:</b> {{professor.idUser}} </p>
+                <p class="card-text"><b>Nombres:</b> {{professor.names}} </p>
+                <p class="card-text"><b>Apellidos:</b> {{professor.lastNames}}</p>
+                <p class="card-text"><b>Telefono:</b> {{professor.numberPhone}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Informacion Docente:</h5>
+                <p class="card-text"><b>Codigo:</b> {{professor.codeProfessor}} </p>
+                <p class="card-text"><b>Email:</b> {{professor.email}}</p>
+                <p class="card-text"><b>Email:</b> {{professor.objProfessorType.name}}</p>
+                <p class="card-text"><b>Estado:</b> {{professor.state}}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 </div>
-

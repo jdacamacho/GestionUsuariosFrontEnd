@@ -1,4 +1,6 @@
-import { ProfessorType } from "./ProfessorType";
+
+import { ProfessorType } from "./ProfessoType";
+import { Role } from "./Role";
 
 export class Professor{
     idUser!:number;
@@ -9,5 +11,10 @@ export class Professor{
     numberPhone!:number;
     state!:string;
     codeProfessor!:number;
-    objProfessorType! : ProfessorType
+    objProfessorType!: ProfessorType;
+    roles!: Role[];
+
+    constructor() {
+        this.objProfessorType = new ProfessorType(); 
+    }
 }

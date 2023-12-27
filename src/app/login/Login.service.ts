@@ -13,6 +13,7 @@ export class LoginService{
     public currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public token : BehaviorSubject<string> = new BehaviorSubject<string>('');
     public currentIdUser : number = 0;
+    public listRole : string[] = [];
 
     constructor(private http: HttpClient) {
         if (typeof sessionStorage !== 'undefined') {
@@ -33,6 +34,8 @@ export class LoginService{
                     sessionStorage.setItem('token',credentionals.token);
                     this.currentUserLoginOn.next(true);
                     this.token.next(sessionStorage.getItem('token') as string);
+                    this.currentIdUser = credentionals.idUser;
+                    this.getRolesFromCredentionals(credentionals.access);
                 })
             );
     }
@@ -42,8 +45,26 @@ export class LoginService{
         this.currentUserLoginOn.next(false);
     }
 
-    public setcurrentIdUser(idUser:number){
-        this.currentIdUser = idUser;
+    getRolesFromCredentionals(roles:string[]):void{
+        roles.forEach(role => {
+            this.listRole.push(role);
+        });
+    }
+
+    errorNotLogin():boolean{
+        if(this.currentIdUser == 0){
+            return false;
+        }
+        return true;
+    }
+
+    errorNotAccess(roles:string[]):boolean{
+        if(roles.length != this.listRole.length){
+            return false;
+        }else{
+            
+        }
+        return true;
     }
 
     get getCurrentIdUser(){
