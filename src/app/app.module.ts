@@ -1,5 +1,5 @@
-import { Component, NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -23,7 +23,8 @@ import { NavBarAdmProfessorComponent } from './nav-bar/nav-bar-adm-professor/nav
 import { UpdateProfessorComponent } from './formsUpdate/update-professor/update-professor.component';
 import { ErrorComponent } from './error/error.component';
 import { BadCredentionalsComponent } from './bad-credentionals/bad-credentionals.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const routes : Routes= [
   {path : '' ,  redirectTo: '/auth' , pathMatch: 'full'},
@@ -61,8 +62,9 @@ const routes : Routes= [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
-
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [
     LoginService,

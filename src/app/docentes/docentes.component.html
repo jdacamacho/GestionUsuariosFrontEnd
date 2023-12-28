@@ -30,7 +30,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let professor of professors">
+                <tr *ngFor="let professor of paginatedProfessors">
                   <td>{{ professor.idUser }}</td>
                   <td>{{ professor.names }}</td>
                   <td>{{ professor.lastNames }}</td>
@@ -50,11 +50,11 @@
                 </tr>
               </tbody>
             </table>
+            <mat-paginator [length]="totalProfessors" [pageSize]="pageSize" (page)="cambiarPagina($event)"></mat-paginator>
           </div>
         </div>
       </div>
     </div>
   </div>
-  </div>
-
+</div>
 
