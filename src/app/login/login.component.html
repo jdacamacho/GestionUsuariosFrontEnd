@@ -1,45 +1,53 @@
-
-
-<div class="fondo">
-    <ul class="alert alert-danger" *ngIf="errores.length > 0">
-        <li *ngFor="let err of errores">
-            {{ err }}
-        </li>
-    </ul>
-    
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <div class="card bg-light">
-                    <div class="card-header bg-light text-black text-center">Iniciar sesión</div>
-                    <div class="card-body">
-                        <form>
-                            <div class="form-group row text-white">
-                                <div class="col-12">
-                                    <input type="text" class="form-control" [(ngModel)]="login.username" name="username"
-                                        #username="ngModel" placeholder="Ingrese su username" required
-                                        [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
-                                </div>
+<!--<ul class="alert alert-danger" *ngIf="errores.length > 0">
+    <li *ngFor="let err of errores">
+        {{ err }}
+    </li>
+</ul>-->
+<div class="container d-flex justify-content-center">
+    <div class="fondo d-flex align-items-center ">
+        <div class="col-md-6">
+            <img src="../../assets/images/escudoUnicauca.jpg" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="bg-light text-black text-center">Iniciar sesión</div>
+                    <hr>
+                    <form>
+                        <div class="form-group row text-white">
+                            <div class="col-md-12">
+                                <input type="text" class="form-control custom-input" [(ngModel)]="login.username"
+                                    name="username" #username="ngModel" placeholder="Ingrese su username" required
+                                    [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
                             </div>
-                            <br>
-                            <div class="form-group row text-white">
-                                <div class="col-12">
-                                    <input type="password" class="form-control" [(ngModel)]="login.password"
-                                        name="password" #password="ngModel" placeholder="Ingrese su password" required
-                                        [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
-                                </div>
+                        </div>
+                        <br>
+                        <div class="form-group row text-white">
+                            <div class="col-md-12">
+                                <input type="password" class="form-control custom-input" [(ngModel)]="login.password"
+                                    name="password" #password="ngModel" placeholder="Ingrese su password" required
+                                    [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
                             </div>
-                            <br>
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100" role="button"
-                                        (click)='logIn()'>Ingresar</button>
-                                </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary" role="button" (click)='logIn()'>Iniciar
+                                    sesion</button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
+            </div>
+            <div>
+                <p class="descripcion">
+                    Aplicacion realizada por: Julian David Camacho Erazo
+                    estudiante del programa de Ingeniera de Sistemas, como
+                    actividad de practica para simular el gestionamiento de
+                    estudiantes y docentes de la universidad del Cauca con 
+                    sus respectivos cursos.
+                </p>
             </div>
         </div>
     </div>
-  </div>
+</div>

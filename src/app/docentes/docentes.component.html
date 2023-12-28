@@ -1,7 +1,7 @@
-<div class="component" *ngIf="userLoginOn && userHasAccess(); else elseBlock">
-  <app-header></app-header>
-  <div class="container mt-4">
-    <div class="card text-black bg-light mb-3">
+<app-header></app-header>
+<div class="container d-flex justify-content-center">
+  <div class="fondo d-flex align-items-start mt-5 ">
+    <div class="card text-black bg-light col-md-12">
       <div class="card-body">
         <div class="row">
           <div class="col-md-2">
@@ -40,11 +40,13 @@
                   <td>{{ professor.codeProfessor }}</td>
                   <td>{{ professor.objProfessorType.name }}</td>
                   <td>
-                    <span [ngClass]="{'text-success': professor.state === 'Habilitado', 'text-danger': professor.state !== 'Habilitado'}">
+                    <span
+                      [ngClass]="{'text-success': professor.state === 'Habilitado', 'text-danger': professor.state !== 'Habilitado'}">
                       {{ professor.state === 'Habilitado' ? '✔' : '✘' }}
                     </span>
                   </td>
-                  <td><button type="button" class="btn btn-primary" [routerLink]="['/docentes/update',professor.idUser]">Actualizar</button></td>
+                  <td><button type="button" class="btn btn-primary"
+                      [routerLink]="['/docentes/update',professor.idUser]">Actualizar</button></td>
                 </tr>
               </tbody>
             </table>
@@ -53,15 +55,6 @@
       </div>
     </div>
   </div>
-</div>
-
-<ng-template #elseBlock>
-  <div class="else-component-error" *ngIf="!userLoginOn;else pagNotAccess">
-    <app-error></app-error>
   </div>
-  <ng-template #pagNotAccess>
-    <div class="else-notAccess" *ngIf="!userHasAccess()">
-      <app-bad-credentionals></app-bad-credentionals>
-    </div>
-  </ng-template>
-</ng-template>
+
+
