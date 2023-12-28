@@ -43,6 +43,8 @@ export class LoginService{
     logout():void{
         sessionStorage.removeItem("token");
         this.currentUserLoginOn.next(false);
+        this.currentIdUser = 0;
+        this.listRole = [];
     }
 
     getRolesFromCredentionals(roles:string[]):void{

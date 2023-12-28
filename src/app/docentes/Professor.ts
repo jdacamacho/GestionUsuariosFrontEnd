@@ -7,6 +7,7 @@ export class Professor{
     names!:string;
     lastNames!:string;
     username!:String;
+    password!:string;
     email!:string;
     numberPhone!:number;
     state!:string;

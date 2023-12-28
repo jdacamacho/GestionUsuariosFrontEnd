@@ -1,42 +1,45 @@
-<div class="container">
+
+
+<div class="fondo">
+    <ul class="alert alert-danger" *ngIf="errores.length > 0">
+        <li *ngFor="let err of errores">
+            {{ err }}
+        </li>
+    </ul>
     
-    <div class="img-escudo">
-        <img src="../../assets/images/escudoUnicauca.jpg">
-    </div>
-    
-    <div class="card bg-light">
-        <div class="card-header bg-light text-black text-center">Iniciar sesion</div>
-        <div class="card-body">
-            <form>
-                <div class="form-group row text-white">
-                    <div class="col-12">
-                        <input type="text" class="form-control" [(ngModel)]="login.username" name="username" #username="ngModel" placeholder="Ingrese su username" required [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <div class="card bg-light">
+                    <div class="card-header bg-light text-black text-center">Iniciar sesión</div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row text-white">
+                                <div class="col-12">
+                                    <input type="text" class="form-control" [(ngModel)]="login.username" name="username"
+                                        #username="ngModel" placeholder="Ingrese su username" required
+                                        [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row text-white">
+                                <div class="col-12">
+                                    <input type="password" class="form-control" [(ngModel)]="login.password"
+                                        name="password" #password="ngModel" placeholder="Ingrese su password" required
+                                        [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100" role="button"
+                                        (click)='logIn()'>Ingresar</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <br>
-                <div class="form-group row text-white">
-                    <div class="col-12">
-                        <input type="password" class="form-control" [(ngModel)]="login.password" name="password" #password="ngModel" placeholder="Ingrese su password" required [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
-                    </div>
-                </div>
-                <br>
-                <div class="form-group row">
-                    <div class="col-12">
-                        <button class="btn btn-primary w-100" role="button" (click)='logIn()'> Ingresar </button>
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
-    </div>  
-    
-    <div class="informacion">
-        <p class="text-black">Aplicativo brindado por la universidad del Cauca</p>
-        <p class="text-black">para consultar las materias matriculadas para su</p>
-        <p class="text-black">respectivo periodo academico.</p>    
-    </div>  
-
-</div>
-
-  
-
-
+    </div>
+  </div>

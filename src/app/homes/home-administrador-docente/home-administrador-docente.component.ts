@@ -31,8 +31,13 @@ export class HomeAdministradorDocenteComponent implements OnInit{
     this.professorService.getProfessor(this.loginService.getCurrentIdUser).subscribe(
       (professor: Professor) => {
         this.professor = professor;
+      },
+      (err) => {
+        console.error('Código del error desde el backend: ' + err.status);
+        console.error(err.error);
       }
     );
+
   }
 
   userHasAccess():boolean{

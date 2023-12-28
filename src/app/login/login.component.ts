@@ -4,7 +4,6 @@ import { login } from './Login';
 import { Router } from '@angular/router';
 import { LoginService } from './Login.service';
 import Swal from 'sweetalert2';
-import { error } from 'node:console';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +13,7 @@ import { error } from 'node:console';
 export class LoginComponent implements OnInit{
   public login : login = new login();
   public credentionals: credentionals = new credentionals();
+  public errores : string[] = [];
 
   constructor(private loginService : LoginService, private router: Router) {}
   
@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit{
         this.redirectHome(roleView,response.username);
       },
       (err) => {
+        this.errores = err.error.split(',');
         console.error('Código del error desde el backend: ' + err.status);
         console.error(err.error);
         Swal.fire('Error', 'ingrese las credenciales correctas','error')

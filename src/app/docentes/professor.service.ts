@@ -14,6 +14,7 @@ export class ProfessorService {
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
   private urlEndPointAdm: string = 'http://localhost:5000/apiProfessor/adm/professors';
   private urlEndPointProfessor: string = 'http://localhost:5000/apiProfessor/professors';
+  
 
   constructor(private http: HttpClient) {}
 
