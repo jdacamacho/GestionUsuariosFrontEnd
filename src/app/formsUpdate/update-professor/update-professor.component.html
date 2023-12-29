@@ -32,6 +32,12 @@
                   </div>
                   <input type="text" class="form-control custom-input" [(ngModel)]="professor.numberPhone"
                     name="numberPhone" #numberPhone="ngModel">
+                  <br>
+                  <div class="text-input">
+                    <label for="names">Correo electronico: </label>
+                  </div>
+                  <input type="text" class="form-control custom-input" [(ngModel)]="professor.email" name="email"
+                    #email="ngModel">
                 </div>
               </div>
             </div>
@@ -39,12 +45,6 @@
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title titulo-tarjeta">Informacion Docente:</h5>
-                  <div class="text-input">
-                    <label for="names">Correo electronico: </label>
-                  </div>
-                  <input type="text" class="form-control custom-input" [(ngModel)]="professor.email" name="email"
-                    #email="ngModel">
-                  <br>
                   <div class="text-input">
                     <label for="names">Tipo docente: </label>
                   </div>
