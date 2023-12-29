@@ -1,3 +1,4 @@
+<div class="component" *ngIf="userLoginOn && userHasAccess(); else elseBlock">
 
   <app-header></app-header>
   <div class="container d-flex justify-content-center">
@@ -23,8 +24,8 @@
                   <div class="text-input">
                     <label for="names">Apellidos: </label>
                   </div>
-                  <input type="text" class="form-control custom-input" [(ngModel)]="professor.lastNames" name="lastNames"
-                    #lastNames="ngModel">
+                  <input type="text" class="form-control custom-input" [(ngModel)]="professor.lastNames"
+                    name="lastNames" #lastNames="ngModel">
                   <br>
                   <div class="text-input">
                     <label for="names">Numero telefonico: </label>
@@ -37,7 +38,7 @@
             <div class="col-md-5">
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Informacion Docente:</h5>
+                  <h5 class="card-title titulo-tarjeta">Informacion Docente:</h5>
                   <div class="text-input">
                     <label for="names">Correo electronico: </label>
                   </div>
@@ -57,9 +58,11 @@
                     <label for="names">Permiso como administrador: </label>
                   </div>
                   <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" [checked]="hasRole()" (change)="toggleCheckbox()">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" [checked]="hasRole()"
+                      (change)="toggleCheckbox()">
                     <label class="form-check-label" for="flexSwitchCheckChecked">
-                      {{ hasRole() ? 'Usuario con permisos de administrador' : 'Usuario sin permisos de administrador' }}
+                      {{ hasRole() ? 'Usuario con permisos de administrador' : 'Usuario sin permisos de administrador'
+                      }}
                     </label>
                   </div>
                   <br>
@@ -69,18 +72,33 @@
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
                       [checked]="professor.state === 'Habilitado'" (change)="toggleState()" name="state">
-                      <label class="form-check-label" for="flexSwitchCheckChecked">Estado en el sistema {{professor.state}}</label>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Estado en el sistema
+                      {{professor.state}}</label>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary custom-button float-end" (click)="confirmarGuardarCambios()">Guardar cambios</button>
+            <button type="button" class="btn btn-primary custom-button float-end"
+              (click)="confirmarGuardarCambios()">Guardar cambios</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+</div>
+
+<ng-template #elseBlock>
+  <div class="else-component-error" *ngIf="!userLoginOn;else pagNotAccess">
+    <app-error></app-error>
+  </div>
+  <ng-template #pagNotAccess>
+    <div class="else-notAccess" *ngIf="!userHasAccess()">
+      <app-bad-credentionals></app-bad-credentionals>
+    </div>
+  </ng-template>
+</ng-template>
 
 

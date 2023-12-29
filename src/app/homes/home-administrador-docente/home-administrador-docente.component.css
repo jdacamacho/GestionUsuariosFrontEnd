@@ -6,3 +6,12 @@
 .card-padre{
     height:auto;
 }
+
+.titulo-tarjeta{
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.card-text{
+    font-size: medium;
+}

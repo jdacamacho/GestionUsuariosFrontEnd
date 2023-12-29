@@ -2,3 +2,8 @@
     width: 100%;
     height: auto;
 }
+
+.titulo-tarjeta{
+    font-weight: bold;
+    font-size: x-large;
+}
