@@ -1,36 +1,33 @@
-<div class="component" *ngIf="userLoginOn && userHasAccess(); else elseBlock">
-  
-  <app-header></app-header>
-  <div class="container d-flex justify-content-center">
-    <div class="fondo d-flex justify-align-items-start mt-5">
-      <div class="card card-padre col-md-12">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="container mt-2">
-                <app-nav-bar-adm-professor></app-nav-bar-adm-professor>
+<app-header></app-header>
+<div class="container d-flex justify-content-center">
+  <div class="fondo d-flex justify-align-items-start mt-5">
+    <div class="card card-padre col-md-12">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="container mt-2">
+              <app-nav-bar-adm-professor></app-nav-bar-adm-professor>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title titulo-tarjeta">Informacion Personal:</h5>
+                <p class="card-text"><b>Identificacion:</b> {{professor.idUser}} </p>
+                <p class="card-text"><b>Nombres:</b> {{professor.names}} </p>
+                <p class="card-text"><b>Apellidos:</b> {{professor.lastNames}}</p>
+                <p class="card-text"><b>Telefono:</b> {{professor.numberPhone}}</p>
               </div>
             </div>
-            <div class="col-md-5">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title titulo-tarjeta">Informacion Personal:</h5>
-                  <p class="card-text"><b>Identificacion:</b> {{professor.idUser}} </p>
-                  <p class="card-text"><b>Nombres:</b> {{professor.names}} </p>
-                  <p class="card-text"><b>Apellidos:</b> {{professor.lastNames}}</p>
-                  <p class="card-text"><b>Telefono:</b> {{professor.numberPhone}}</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title titulo-tarjeta">Informacion Docente:</h5>
-                  <p class="card-text"><b>Codigo:</b> {{professor.codeProfessor}} </p>
-                  <p class="card-text"><b>Email:</b> {{professor.email}}</p>
-                  <p class="card-text"><b>Tipo docente:</b> {{professor.objProfessorType.name}}</p>
-                  <p class="card-text"><b>Estado:</b> {{professor.state}}</p>
-                </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title titulo-tarjeta">Informacion Docente:</h5>
+                <p class="card-text"><b>Codigo:</b> {{professor.codeProfessor}} </p>
+                <p class="card-text"><b>Email:</b> {{professor.email}}</p>
+                <p class="card-text"><b>Tipo docente:</b> {{professor.objProfessorType.name}}</p>
+                <p class="card-text"><b>Estado:</b> {{professor.state}}</p>
               </div>
             </div>
           </div>
@@ -39,15 +36,5 @@
     </div>
   </div>
 </div>
-  
-<ng-template #elseBlock>
-  <div class="else-component-error" *ngIf="!userLoginOn;else pagNotAccess">
-    <app-error></app-error>
-  </div>
-  <ng-template #pagNotAccess>
-    <div class="else-notAccess" *ngIf="!userHasAccess()">
-      <app-bad-credentionals></app-bad-credentionals>
-    </div>
-  </ng-template>
-</ng-template>
-  
+
+    

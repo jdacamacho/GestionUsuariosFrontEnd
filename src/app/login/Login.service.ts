@@ -25,6 +25,11 @@ export class LoginService {
       if (storedRoles) {
         this.listRole = JSON.parse(storedRoles);
       }
+
+      const storedUserId = localStorage.getItem('idCurrentUser');
+      if (storedUserId) {
+        this.currentIdUser = parseInt(storedUserId, 10);
+      }
     }
   }
 
@@ -43,6 +48,7 @@ export class LoginService {
           this.currentIdUser = credentionals.idUser;
           this.listRole = credentionals.access;
           localStorage.setItem('userRoles', JSON.stringify(this.listRole));
+          localStorage.setItem('idCurrentUser',credentionals.idUser.toString());
         })
       );
   }

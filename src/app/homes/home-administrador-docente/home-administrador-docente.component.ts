@@ -38,9 +38,16 @@ export class HomeAdministradorDocenteComponent implements OnInit{
       }
     );
 
+    this.userErrorPage();
+
   }
 
-  userHasAccess():boolean{
-    return this.loginService.errorNotAccess(this.rolesWithAccess);
+  userErrorPage():void{
+    if(!this.userLoginOn){
+      this.router.navigate(['error']);
+      if(!this.loginService.errorNotAccess(this.rolesWithAccess)){
+        this.router.navigate(['error/accessDenied']);
+      }
+    }
   }
 }
