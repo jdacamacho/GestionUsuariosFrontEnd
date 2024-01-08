@@ -25,6 +25,9 @@ import { ErrorComponent } from './error/error.component';
 import { BadCredentionalsComponent } from './bad-credentionals/bad-credentionals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { CreateProfessorComponent } from './formsCreate/create-professor/create-professor.component';
+import { CreateEstudianteComponent } from './formsCreate/create-estudiante/create-estudiante.component';
+import { UpdateEstudianteComponent } from './formsUpdate/update-estudiante/update-estudiante.component';
 
 const routes : Routes= [
   {path : '' ,  redirectTo: '/auth' , pathMatch: 'full'},
@@ -36,7 +39,8 @@ const routes : Routes= [
   {path:'docentes',component:DocentesComponent},
   {path:'docentes/update/:idDocente',component:UpdateProfessorComponent},
   {path:'error',component:ErrorComponent},
-  {path:'error/accessDenied',component:BadCredentionalsComponent}
+  {path:'error/accessDenied',component:BadCredentionalsComponent},
+  {path:'docentes/create',component:CreateProfessorComponent}
 ]
 
 @NgModule({
@@ -57,6 +61,9 @@ const routes : Routes= [
     UpdateProfessorComponent,
     ErrorComponent,
     BadCredentionalsComponent,
+    CreateProfessorComponent,
+    CreateEstudianteComponent,
+    UpdateEstudianteComponent,
   ],
   imports: [
     BrowserModule,

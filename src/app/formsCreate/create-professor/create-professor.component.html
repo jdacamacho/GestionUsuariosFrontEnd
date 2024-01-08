@@ -1,0 +1,126 @@
+<div class="component" *ngIf="userLoginOn && userHasAccess(); else elseBlock">
+
+    <app-header></app-header>
+
+    <ul class="alert alert-danger" *ngIf="errores.length > 0">
+        <li *ngFor="let err of errores">
+            {{ err }}
+        </li>
+    </ul>
+
+    <div class="container d-flex justify-content-center">
+        <div class="fondo d-flex justify-align-items-start mt-5">
+            <div class="card col-md-12">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="container mt-2">
+                                <app-nav-bar-adm-professor></app-nav-bar-adm-professor>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Informacion Personal:</h5>
+                                    <div class="text-input">
+                                        <label for="names">Identificacion: </label>
+                                    </div>
+                                    <input type="text" class="form-control custom-input" [(ngModel)]="professor.idUser"
+                                        name="idUser" #idUser="ngModel">
+                                    <br>
+                                    <div class="text-input">
+                                        <label for="names">Nombres: </label>
+                                    </div>
+                                    <input type="text" class="form-control custom-input" [(ngModel)]="professor.names"
+                                        name="names" #names="ngModel">
+                                    <br>
+                                    <div class="text-input">
+                                        <label for="names">Apellidos: </label>
+                                    </div>
+                                    <input type="text" class="form-control custom-input"
+                                        [(ngModel)]="professor.lastNames" name="lastNames" #lastNames="ngModel">
+                                    <br>
+                                    <div class="text-input">
+                                        <label for="names">Numero telefonico: </label>
+                                    </div>
+                                    <input type="text" class="form-control custom-input"
+                                        [(ngModel)]="professor.numberPhone" name="numberPhone" #numberPhone="ngModel">
+                                    <br>
+                                    <div class="text-input">
+                                        <label for="names">Correo electronico: </label>
+                                    </div>
+                                    <input type="text" class="form-control custom-input" [(ngModel)]="professor.email"
+                                        name="email" #email="ngModel">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title titulo-tarjeta">Informacion Docente:</h5>
+                                    <div class="text-input">
+                                        <label for="names">Codigo docente: </label>
+                                    </div>
+                                    <input type="text" class="form-control custom-input"
+                                        [(ngModel)]="professor.codeProfessor" name="codeProfessor" #email="ngModel">
+                                    <br>
+                                    <div class="text-input">
+                                        <label for="names">Username: </label>
+                                    </div>
+                                    <input type="text" class="form-control custom-input"
+                                        [(ngModel)]="professor.username" name="username" #username="ngModel">
+                                    <br>
+                                    <div class="text-input">
+                                        <label for="names">Password: </label>
+                                    </div>
+                                    <input type="password" class="form-control custom-input"
+                                        [(ngModel)]="professor.password" name="password" #password="ngModel">
+                                    <br>
+                                    <div class="text-input">
+                                        <label for="names">Tipo docente: </label>
+                                    </div>
+                                    <select class="form-control custom-input" [compareWith]="compararProfessorsType"
+                                        [(ngModel)]="professor.objProfessorType" name="objProfessorType">
+                                        <option [ngValue]="null">--- seleccione el tipo de docente ---</option>
+                                        <option *ngFor="let type of professorTypes" [ngValue]="type"> {{type.name}}
+                                        </option>
+                                    </select>
+                                    <br>
+                                    <div class="text-input">
+                                        <label for="names">Permiso como administrador: </label>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
+                                            [checked]="hasRole()" (change)="toggleCheckbox()">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">
+                                            {{ hasRole() ? 'Usuario con permisos de administrador' : 'Usuario sin
+                                            permisos de administrador'
+                                            }}
+                                        </label>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary custom-button float-end"
+                            (click)="createProfessor()">Guardar cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #elseBlock>
+    <div class="else-component-error" *ngIf="!userLoginOn;else pagNotAccess">
+        <app-error></app-error>
+    </div>
+    <ng-template #pagNotAccess>
+        <div class="else-notAccess" *ngIf="!userHasAccess()">
+            <app-bad-credentionals></app-bad-credentionals>
+        </div>
+    </ng-template>
+</ng-template>

@@ -1,57 +1,46 @@
 import { Component, OnInit } from '@angular/core';
 import { Professor } from '../../docentes/Professor';
+import { ProfessorType } from '../../docentes/ProfessoType';
 import { ProfessorService } from '../../docentes/professor.service';
 import { LoginService } from '../../login/Login.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ProfessorType } from '../../docentes/ProfessoType';
 import { Role } from '../../docentes/Role';
 
 @Component({
-  selector: 'app-update-professor',
-  templateUrl: './update-professor.component.html',
-  styleUrl: './update-professor.component.css',
+  selector: 'app-create-professor',
+  templateUrl: './create-professor.component.html',
+  styleUrl: './create-professor.component.css'
 })
-export class UpdateProfessorComponent implements OnInit {
+export class CreateProfessorComponent implements OnInit{
   public tittle: String = 'Actualizar docente';
   public professor: Professor = new Professor();
   public userLoginOn: boolean = false;
   public errores: string[] = [];
   private rolesWithAccess: string[] = ['ROLE_Administrador', 'ROLE_Docente'];
   public professorTypes: ProfessorType[] = [];
-  public adm: Role = new Role();
-
+  public adm:Role = new Role();
 
   constructor(
     private professorService: ProfessorService,
     private loginService: LoginService,
-    private router: Router,
-    private activedRoute: ActivatedRoute
+    private router:Router
   ) {}
 
   ngOnInit(): void {
+
     this.adm.idRole = 1;
     this.adm.name = 'ROLE_Administrador';
 
+    this.professor.state = 'Habilitado';
+    
     this.loginService.currentUserLoginOn.subscribe({
       next: (userLoginOn) => {
         this.userLoginOn = userLoginOn;
       },
     });
 
-    this.activedRoute.params.subscribe((params) => {
-      const idDocente = +params['idDocente'];
-      this.professorService.getProfessor(idDocente).subscribe(
-        (response) =>{
-          this.professor = response;
-        },
-        (err) =>{
-          console.error('Código del error desde el backend: ' + err.status);
-          console.error(err.error);
-          Swal.fire('Error', 'Usuario no encontrado','error')
-        }
-      )
-    });
+    console.log(this.userLoginOn);
 
     this.professorService.getTypeProfessors().subscribe((professorTypes) => {
       this.professorTypes = professorTypes;
@@ -59,31 +48,19 @@ export class UpdateProfessorComponent implements OnInit {
 
   }
 
-  public confirmarGuardarCambios(): void {
-    Swal.fire({
-      title: '¿Estás seguro de guardar los cambios?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, guardar cambios',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.updateProfessor();
-      }
-    });
-  }
-
-  public updateProfessor(): void {
+  public createProfessor(): void {
+    let professor = new Role();
+    professor.idRole = 2;
+    professor.name = 'ROLE_Docente';
+    this.professor.roles.push(professor);
     this.professorService
-      .update(this.professor, this.professor.idUser)
+      .create(this.professor)
       .subscribe(
         (response) => {
-          this.router.navigate(['/docentes']);
+          this.router.navigate(['/homeAdmDocente']);
           Swal.fire(
-            'professor modificado',
-            `´Professor ${response.names} actualizado con éxito!`,
+            'professor creado',
+            `´Professor ${response.names} creado con éxito!`,
             'success'
           );
         },

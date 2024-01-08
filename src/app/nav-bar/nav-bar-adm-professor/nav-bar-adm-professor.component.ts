@@ -11,25 +11,19 @@ import Swal from 'sweetalert2';
   templateUrl: './nav-bar-adm-professor.component.html',
   styleUrl: './nav-bar-adm-professor.component.css'
 })
-export class NavBarAdmProfessorComponent implements OnInit{
+export class NavBarAdmProfessorComponent{
   public professor:Professor = new Professor();
 
   constructor(private loginService:LoginService,
-              private professorService:ProfessorService,
               private router:Router){
-
-  }
-
-  ngOnInit(): void {
-    this.professorService.getProfessor(this.loginService.getCurrentIdUser).subscribe(
-      (professor) =>{
-        this.professor = professor;
-      }
-    );
   }
 
   public listProfessors(){
     this.router.navigate(['/docentes']);
+  }
+
+  public createProfessor(){
+    this.router.navigate(['docentes/create']);
   }
 
   public redirectHome(){

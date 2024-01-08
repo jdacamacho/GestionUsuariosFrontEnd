@@ -1,6 +1,13 @@
-<div class="component" *ngIf="userLoginOn && userHasAccess(); else elseBlock">
+
 
   <app-header></app-header>
+
+  <ul class="alert alert-danger" *ngIf="errores.length > 0">
+    <li *ngFor="let err of errores">
+        {{ err }}
+    </li>
+  </ul>
+
   <div class="container d-flex justify-content-center">
     <div class="fondo d-flex justify-align-items-start mt-5">
       <div class="card col-md-12">
@@ -88,17 +95,6 @@
     </div>
   </div>
 
-</div>
 
-<ng-template #elseBlock>
-  <div class="else-component-error" *ngIf="!userLoginOn;else pagNotAccess">
-    <app-error></app-error>
-  </div>
-  <ng-template #pagNotAccess>
-    <div class="else-notAccess" *ngIf="!userHasAccess()">
-      <app-bad-credentionals></app-bad-credentionals>
-    </div>
-  </ng-template>
-</ng-template>
 
 

@@ -39,9 +39,6 @@ export class ProfessorService {
       .post<Professor>(this.urlEndPointAdm, professor, { headers: this.httpHeaders })
       .pipe(
         catchError((e: any) => {
-          if (e.status == 400) {
-            return throwError(e);
-          }
           console.log(e.error.mensaje);
           Swal.fire('Error al crear el docente', e.error.mensaje, 'error');
           return throwError(e);

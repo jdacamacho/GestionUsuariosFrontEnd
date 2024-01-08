@@ -1,0 +1,23 @@
+.fondo{
+    width: 100%;
+    height: auto;
+}
+
+.custom-input{
+    width: 300px;
+    border-radius: 20px;
+}
+
+.text-input{
+    font-weight:600;
+}
+
+.custom-button{
+    border-radius: 20px;
+    margin-top: 20px;
+}
+
+.card-title{
+    font-weight: bold;
+    font-size: x-large;
+}
