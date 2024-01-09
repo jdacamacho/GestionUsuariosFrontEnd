@@ -3,9 +3,34 @@
     height: auto;
 }
 
+
+.fondo-mensaje{
+    width: auto;
+    height: 50px;
+}
+
+.titulo-mensaje{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight:450;
+    font-size: 50px;
+    color: rgba(41,22,111,255);
+}
+
+
+.card-label{
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(41,22,111,255);
+}
+
+.label-contenido{
+    font-size: 20px;
+}
+
 .custom-input{
-    width: 300px;
+    width: 270px;
     border-radius: 20px;
+    border-color:gray;
 }
 
 .text-input{
@@ -17,7 +42,13 @@
     margin-top: 20px;
 }
 
-.card-title{
-    font-weight: bold;
-    font-size: x-large;
+.titulo-tarjeta{
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(41,22,111,255);
+}
+
+.form-check-label{
+    font-weight: normal;
+    font-size: 17px;
 }

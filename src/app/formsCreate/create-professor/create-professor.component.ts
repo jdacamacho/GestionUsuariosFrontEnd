@@ -40,11 +40,13 @@ export class CreateProfessorComponent implements OnInit{
       },
     });
 
-    console.log(this.userLoginOn);
+    if(this.loginService.getCurrentIdUser != 0){
+      this.professorService.getTypeProfessors().subscribe((professorTypes) => {
+        this.professorTypes = professorTypes;
+      });
+    }
 
-    this.professorService.getTypeProfessors().subscribe((professorTypes) => {
-      this.professorTypes = professorTypes;
-    });
+    this.userErrorPage();
 
   }
 
@@ -53,6 +55,7 @@ export class CreateProfessorComponent implements OnInit{
     professor.idRole = 2;
     professor.name = 'ROLE_Docente';
     this.professor.roles.push(professor);
+
     this.professorService
       .create(this.professor)
       .subscribe(
@@ -72,8 +75,15 @@ export class CreateProfessorComponent implements OnInit{
       );
   }
 
-  userHasAccess(): boolean {
-    return this.loginService.errorNotAccess(this.rolesWithAccess);
+  userErrorPage():void{
+    if(!this.userLoginOn && this.professor == null ){
+      if(!this.userLoginOn){
+        this.router.navigate(['error']);
+        if(!this.loginService.errorNotAccess(this.rolesWithAccess)){
+          this.router.navigate(['error/accessDenied']);
+        }
+      }
+    }
   }
 
   toggleState() {
