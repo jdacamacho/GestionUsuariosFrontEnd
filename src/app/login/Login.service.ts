@@ -71,10 +71,8 @@ export class LoginService {
 
   errorNotAccess(roles: string[]): boolean {
     if (roles.length != this.listRole.length) {
-      console.log('sin roles');
       return false;
     } else {
-      console.log(this.listRole);
       const flagResponse = this.listRole.every(role => roles.includes(role));
       return flagResponse;
     }

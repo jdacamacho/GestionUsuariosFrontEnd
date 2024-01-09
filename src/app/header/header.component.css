@@ -11,4 +11,6 @@
 .titulo{
     font-size: 60px;
     font-family: 'Times New Roman', Times, serif;
+    width: auto;
+    height: auto;
 }

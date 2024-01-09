@@ -1,6 +1,15 @@
 <app-header></app-header>
+
+<div class="container-saludo d-flex justify-content-center">
+  <div class="fondo-saludo d-flex align-items-end">
+    <div class="titulo-saludo">
+      BIENVENIDO!
+    </div>
+  </div>
+</div>
+
 <div class="container d-flex justify-content-center">
-  <div class="fondo d-flex justify-align-items-start mt-5">
+  <div class="fondo d-flex align-items-start mt-5">
     <div class="card card-padre col-md-12">
       <div class="card-body">
         <div class="row">
@@ -12,22 +21,54 @@
           <div class="col-md-5">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title titulo-tarjeta">Informacion Personal:</h5>
-                <p class="card-text"><b>Identificacion:</b> {{professor.idUser}} </p>
-                <p class="card-text"><b>Nombres:</b> {{professor.names}} </p>
-                <p class="card-text"><b>Apellidos:</b> {{professor.lastNames}}</p>
-                <p class="card-text"><b>Telefono:</b> {{professor.numberPhone}}</p>
+                <h5 class="card-title titulo-tarjeta">Información Personal:</h5>
+                <br>
+                <div class="card-text">
+                  <div class="card-label">Identificación:</div>
+                  <span class="label-contenido">{{professor.idUser}}</span>
+                </div>
+                <br>
+                <div class="card-text">
+                  <div class="card-label">Nombres:</div>
+                  <span class="label-contenido">{{professor.names}}</span>
+                </div>
+                <br>
+                <div class="card-text">
+                  <div class="card-label">Apellidos:</div>
+                  <span class="label-contenido">{{professor.lastNames}}</span>
+                </div>
+                <br>
+                <div class="card-text">
+                  <div class="card-label">Teléfono:</div>
+                  <span class="label-contenido">{{professor.numberPhone}}</span>
+                </div>
               </div>
             </div>
           </div>
           <div class="col-md-5">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title titulo-tarjeta">Informacion Docente:</h5>
-                <p class="card-text"><b>Codigo:</b> {{professor.codeProfessor}} </p>
-                <p class="card-text"><b>Email:</b> {{professor.email}}</p>
-                <p class="card-text"><b>Tipo docente:</b> {{professor.objProfessorType.name}}</p>
-                <p class="card-text"><b>Estado:</b> {{professor.state}}</p>
+                <h5 class="card-title titulo-tarjeta">Información Docente:</h5>
+                <br>
+                <div class="card-text">
+                  <div class="card-label">Código:</div>
+                  <span class="label-contenido">{{professor.codeProfessor}}</span>
+                </div>
+                <br>
+                <div class="card-text">
+                  <div class="card-label">Email:</div>
+                  <span class="label-contenido">{{professor.email}}</span>
+                </div>
+                <br>
+                <div class="card-text">
+                  <div class="card-label">Tipo docente:</div>
+                  <span class="label-contenido">{{professor.objProfessorType.name}}</span>
+                </div>
+                <br>
+                <div class="card-text">
+                  <div class="card-label">Estado:</div>
+                  <span class="label-contenido">{{professor.state}}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -36,5 +77,3 @@
     </div>
   </div>
 </div>
-
-    

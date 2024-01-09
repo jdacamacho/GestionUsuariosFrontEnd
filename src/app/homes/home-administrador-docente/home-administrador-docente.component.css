@@ -3,15 +3,35 @@
     height: 400px;
 }
 
+.fondo-saludo{
+    width: auto;
+    height: 50px;
+}
+
+.titulo-saludo{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight:450;
+    font-size: 50px;
+    color: rgba(41,22,111,255);
+}
+
 .card-padre{
     height:auto;
 }
 
 .titulo-tarjeta{
-    font-weight: bold;
-    font-size: x-large;
+    font-weight: normal;
+    font-size: 30px;
+    color: rgba(41,22,111,255);
 }
 
-.card-text{
-    font-size: medium;
+.card-label{
+    display: inline-block;
+    font-weight: normal;
+    font-size: 20px;
+    color: rgba(41,22,111,255);
+}
+
+.label-contenido{
+    font-size: 20px;
 }

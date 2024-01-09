@@ -1,4 +1,4 @@
-
+<div class="component" *ngIf="userLoginOn && userHasAccess(); else elseBlock">
 
   <app-header></app-header>
 
@@ -95,6 +95,17 @@
     </div>
   </div>
 
+</div>
 
+<ng-template #elseBlock>
+  <div class="else-component-error" *ngIf="!userLoginOn;else pagNotAccess">
+    <app-error></app-error>
+  </div>
+  <ng-template #pagNotAccess>
+    <div class="else-notAccess" *ngIf="!userHasAccess()">
+      <app-bad-credentionals></app-bad-credentionals>
+    </div>
+  </ng-template>
+</ng-template>
 
 

@@ -3,6 +3,7 @@ import { Professor } from './Professor';
 import { ProfessorService } from './professor.service';
 import { LoginService } from '../login/Login.service';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-docentes',
@@ -20,7 +21,8 @@ export class DocentesComponent implements OnInit {
 
   constructor(
     private professorService: ProfessorService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -37,10 +39,17 @@ export class DocentesComponent implements OnInit {
         this.totalProfessors = professors.length;
         this.updateProfessorsForPage();
       });
+      
+    this.userErrorPage();
   }
 
-  userHasAccess(): boolean {
-    return this.loginService.errorNotAccess(this.rolesWithAccess);
+  userErrorPage():void{
+    if(!this.userLoginOn){
+      this.router.navigate(['error']);
+      if(!this.loginService.errorNotAccess(this.rolesWithAccess)){
+        this.router.navigate(['error/accessDenied']);
+      }
+    }
   }
 
   cambiarPagina(e: PageEvent) {
